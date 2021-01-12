@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:taskapp2/pages/diary.dart';
+import 'package:taskapp2/pages/goal.dart';
+import 'package:taskapp2/pages/task_list.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -9,12 +12,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
+  List pages = [TaskList(), Goal(), Diary()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(),
+      body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
       ),
