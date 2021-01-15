@@ -44,3 +44,4 @@ class _MyHomePageState extends State<MyHomePage> {
 
 //home.dartにテスト記入
 //もう一行記入。ターミナルからは、pushできているようだ。
+//勝利の瞬間まであと１分
