@@ -7,20 +7,20 @@ class TaskList extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            bar(),
-            bar(),
+            bar("今日のタスク"),
+            bar("明日以降のタスク"),
           ],
         ),
       ),
     );
   }
 
-  Widget bar() {
+  Widget bar(String title) {
     return Container(
       constraints: BoxConstraints.expand(height: 50),
       child: Center(
         child: Text(
-          "今日のタスク",
+          title,
           style: TextStyle(
             color: Colors.white,
           ),
