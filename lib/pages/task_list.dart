@@ -7,39 +7,28 @@ class TaskList extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              constraints: BoxConstraints.expand(height: 50),
-              child: Center(
-                child: Text(
-                  "今日のタスク",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey[850],
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-
-            Container(
-              constraints: BoxConstraints.expand(height: 50),
-              child: Center(
-                child: Text(
-                  "明日以降のタスク",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey[850],
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
+            bar(),
+            bar(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget bar() {
+    return Container(
+      constraints: BoxConstraints.expand(height: 50),
+      child: Center(
+        child: Text(
+          "今日のタスク",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      decoration: BoxDecoration(
+        color: Colors.grey[850],
+        borderRadius: BorderRadius.circular(5),
       ),
     );
   }
