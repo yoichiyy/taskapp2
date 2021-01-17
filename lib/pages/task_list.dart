@@ -8,6 +8,11 @@ class TaskList extends StatelessWidget {
         child: Column(
           children: [
             bar("今日のタスク"),
+            ListTile(
+              title: Text("お茶を飲む"),
+              subtitle: Text("01月01日(金) 00:00"),
+              trailing: Text("1時間後"),
+            ),
             bar("明日以降のタスク"),
           ],
         ),
