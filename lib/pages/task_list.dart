@@ -22,6 +22,22 @@ class TaskList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
+
+            Container(
+              constraints: BoxConstraints.expand(height: 50),
+              child: Center(
+                child: Text(
+                  "明日以降のタスク",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.grey[850],
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
           ],
         ),
       ),
