@@ -8,12 +8,11 @@ class TaskList extends StatelessWidget {
         child: Column(
           children: [
             bar("今日のタスク"),
-            ListTile(
-              title: Text("お茶を飲む"),
-              subtitle: Text("01月01日(金) 00:00"),
-              trailing: Text("1時間後"),
-            ),
+            taskItem(),
+            taskItem(),
             bar("明日以降のタスク"),
+            taskItem(),
+            taskItem(),
           ],
         ),
       ),
@@ -35,6 +34,14 @@ class TaskList extends StatelessWidget {
         color: Colors.grey[850],
         borderRadius: BorderRadius.circular(5),
       ),
+    );
+  }
+
+  Widget taskItem() {
+    return ListTile(
+      title: Text("お茶を飲む"),
+      subtitle: Text("01月01日(金) 00:00"),
+      trailing: Text("1時間後"),
     );
   }
 }
