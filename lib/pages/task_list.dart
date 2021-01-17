@@ -38,23 +38,28 @@ class TaskList extends StatelessWidget {
   }
 
   Widget taskItem() {
-    return SizedBox(
-      height: 70,
-      child: Row(
-        children: [
-          Container(
-            constraints: BoxConstraints.expand(width: 10),
-            color: Colors.blue,
+    return Column(
+      children: [
+        SizedBox(
+          height: 70,
+          child: Row(
+            children: [
+              Container(
+                constraints: BoxConstraints.expand(width: 10),
+                color: Colors.blue,
+              ),
+              Expanded(
+                child: ListTile(
+                  title: Text("お茶を飲む"),
+                  subtitle: Text("01月01日(金) 00:00"),
+                  trailing: Text("1時間後"),
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            child: ListTile(
-              title: Text("お茶を飲む"),
-              subtitle: Text("01月01日(金) 00:00"),
-              trailing: Text("1時間後"),
-            ),
-          ),
-        ],
-      ),
+        ),
+        Divider(color: Colors.grey, height: 1,)
+      ],
     );
   }
 }
