@@ -5,12 +5,20 @@ class TaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             bar("今日のタスク"),
             taskItem(),
             taskItem(),
             bar("明日以降のタスク"),
+            taskItem(),
+            taskItem(),
+            taskItem(),
+            taskItem(),
+            taskItem(),
+            taskItem(),
+            taskItem(),
+            taskItem(),
             taskItem(),
             taskItem(),
           ],
