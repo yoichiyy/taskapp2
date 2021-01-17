@@ -38,10 +38,23 @@ class TaskList extends StatelessWidget {
   }
 
   Widget taskItem() {
-    return ListTile(
-      title: Text("お茶を飲む"),
-      subtitle: Text("01月01日(金) 00:00"),
-      trailing: Text("1時間後"),
+    return SizedBox(
+      height: 70,
+      child: Row(
+        children: [
+          Container(
+            constraints: BoxConstraints.expand(width: 10),
+            color: Colors.blue,
+          ),
+          Expanded(
+            child: ListTile(
+              title: Text("お茶を飲む"),
+              subtitle: Text("01月01日(金) 00:00"),
+              trailing: Text("1時間後"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
