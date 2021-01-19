@@ -32,10 +32,24 @@ class TaskList extends StatelessWidget {
   Widget taskItem() {
     return Column(
       children: [
-        ListTile(
-          title: Text("お茶を飲む"),
-          subtitle: Text("1月19日(火)"),
-          trailing: Text("1時間後"),
+        SizedBox(
+          height: 70,
+          child: Row(
+            children: [
+              Container(
+                constraints: BoxConstraints.expand(width: 10),
+                color: Colors.blue,
+              ),
+              Expanded(
+                child: ListTile(
+                  //デフォルトで横幅いっぱいという設定。
+                  title: Text("お茶を飲む"),
+                  subtitle: Text("1月19日(火)"),
+                  trailing: Text("1時間後"),
+                ),
+              ),
+            ],
+          ),
         ),
         Divider(
           color: Colors.grey,
