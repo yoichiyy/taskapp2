@@ -17,7 +17,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
