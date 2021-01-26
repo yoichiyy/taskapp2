@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:taskapp2/pages/diary.dart';
 import 'package:taskapp2/pages/goal.dart';
 import 'package:taskapp2/pages/task_list.dart';
+import 'package:taskapp2/Util/util_move_page.dart';
+import 'package:taskapp2/pages/task_edit.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -20,6 +22,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        onPressed: () {
+          UtilMovePage().normalPush(context, PageTaskEdit());
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.white,
