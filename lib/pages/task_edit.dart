@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:taskapp2/Util/util_move_page.dart';
+
+import '../home.dart';
 
 class PageTaskEdit extends StatelessWidget {
   @override
@@ -11,7 +14,7 @@ class PageTaskEdit extends StatelessWidget {
           body: Stack(
             children: [
               Container(
-                color: Colors.black,
+                color: Colors.lightGreen,
               ),
               Align(
                 alignment: Alignment.center,
@@ -23,8 +26,11 @@ class PageTaskEdit extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          _iconButton(Icons.highlight_off,
-                              () => print("==== tap batu button!! ====")),
+                          _iconButton(
+                              Icons.highlight_off,
+                              () => UtilMovePage().normalPush(context,
+                                  MyHomePage()) //それともページのレイヤーみたいのを剥がす操作だろうか。そもそもそういうペジ操作についての知識がほしい。
+                              ),
                           Icon(Icons.loop),
                           Icon(Icons.play_circle_outline),
                         ],
