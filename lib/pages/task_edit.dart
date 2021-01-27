@@ -27,10 +27,11 @@ class PageTaskEdit extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           _iconButton(
-                              Icons.highlight_off,
-                              () => UtilMovePage().normalPush(context,
-                                  MyHomePage()) //それともページのレイヤーみたいのを剥がす操作だろうか。そもそもそういうペジ操作についての知識がほしい。
-                              ),
+                            Icons.highlight_off,
+                            () => Navigator.pop(context),
+//                                  UtilMovePage().normalPush(context,
+//                                  MyHomePage()) //それともページのレイヤーみたいのを剥がす操作だろうか。そもそもそういうペジ操作についての知識がほしい。
+                          ),
                           Icon(Icons.loop),
                           Icon(Icons.play_circle_outline),
                         ],
@@ -196,7 +197,7 @@ class PageTaskEdit extends StatelessWidget {
       constraints: BoxConstraints.expand(height: 40),
       child: RaisedButton(
         color: Color.fromRGBO(190, 200, 210, 1),
-        child: Text("what is it"),
+        child: Text("もとはタグ選択"),
       ),
     );
   }
