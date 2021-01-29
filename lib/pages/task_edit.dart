@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:taskapp2/Util/util_move_page.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:taskapp2/Util/util_time_calc.dart';
 
 import '../home.dart';
 
-class PageTaskEdit extends StatelessWidget {
+class PageTaskEdit extends StatefulWidget {
+  final Map editTaskData;
+  PageTaskEdit({this.editTaskData});
+
+  @override
+  _PageTaskEditState createState() => _PageTaskEditState();
+}
+
+class _PageTaskEditState extends State<PageTaskEdit> {
+  Color bgColor = Color.fromRGBO(3, 7, 47, 1);
+
+  TextEditingController _nameController = TextEditingController();
+  DateTime taskDeadline;
+
+  @override
+  void initState() {
+    // タスク編集時 各項目を反映
+    taskDeadline = _mydatetime;
+    super.initState();
+  } // initStateここまで
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -98,9 +120,36 @@ class PageTaskEdit extends StatelessWidget {
 
   // 選択した日時を格納する変数
   var _mydatetime = new DateTime.now();
+  // 日時を指定したフォーマットで指定するためのフォーマッター
+  var dateTimeFormatter = DateFormat('MM月dd日(E) HH:mm', "ja_JP");
+  var timeFormatter = DateFormat('HH:mm', "ja_JP");
 
   Widget _showDeadline() {
     return GestureDetector(
+      onTap: () {
+        // 期日を設けることのできるタグの時のみ、showDateTimePickerを呼び出す
+        DatePicker.showDateTimePicker(context, showTitleActions: true,
+            // onChanged内の処理はDatepickerの選択に応じて毎回呼び出される
+            onChanged: (date) {
+          // print('change $date');
+        },
+            // onConfirm内の処理はDatepickerで選択完了後に呼び出される
+            onConfirm: (date) {
+          if (DateTime.now().millisecondsSinceEpoch <
+              date.millisecondsSinceEpoch) {
+            // 現在より後の日時は設定可能
+            setState(() {
+              _mydatetime = date;
+              taskDeadline = _mydatetime;
+            });
+          }
+        },
+            // Datepickerのデフォルトで表示する日時
+            currentTime: _mydatetime,
+            // localによって色々な言語に対応
+            //  locale: LocaleType.en
+            locale: LocaleType.jp);
+      },
       child: Container(
         color: Color.fromRGBO(190, 200, 210, 1),
         padding: EdgeInsets.all(5),
@@ -113,7 +162,7 @@ class PageTaskEdit extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "なんのテキストかな？",
+                      dateTimeFormatter.format(_mydatetime),
                       style: TextStyle(
                         color: Color.fromRGBO(150, 150, 150, 1),
                       ),
@@ -121,11 +170,16 @@ class PageTaskEdit extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
-                    Text("３月３１日14時３０分"),
+                    Text(
+                      (DateTime.now().millisecondsSinceEpoch <
+                              _mydatetime.millisecondsSinceEpoch)
+                          ? UtilTimeCalc().fromAtNow(_mydatetime)
+                          : "",
+                    ),
                   ],
                 ),
                 Text(
-                  "森川勉強中",
+                  "繰り返し処理のことだろう",
                   style: TextStyle(
                       color: Color.fromRGBO(150, 150, 150, 1), fontSize: 12),
                 ),
