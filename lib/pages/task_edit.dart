@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:taskapp2/Util/util_dialog.dart';
 import 'package:taskapp2/Util/util_time_calc.dart';
 
 class PageTaskEdit extends StatefulWidget {
@@ -243,6 +244,19 @@ class _PageTaskEditState extends State<PageTaskEdit> {
           style: TextStyle(fontSize: 12),
         ),
         color: Colors.white,
+        onPressed: () {
+          print("==== table cell tap!! ====");
+          if (DateTime.now().millisecondsSinceEpoch <
+              _mydatetime.add(duration).millisecondsSinceEpoch) {
+            setState(() {
+              _mydatetime = _mydatetime.add(duration);
+              taskDeadline = _mydatetime;
+            });
+          } else {
+            UtilDialog()
+                .okDialog(context, "過去の日時になります", "現在より後の日時となるようにしてください。");
+          }
+        },
       ),
     );
   }
