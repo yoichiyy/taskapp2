@@ -192,6 +192,9 @@ class _PageTaskEditState extends State<PageTaskEdit> {
                 ),
                 onPressed: () {
                   print("==== clear!! ====");
+                  setState(() {
+                    taskDeadline = null;
+                  });
                 },
               ),
             )
