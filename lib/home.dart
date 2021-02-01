@@ -36,10 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: "タスク"),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: "長目"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today), label: "日誌"),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: "task"),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: "A"),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: "B"),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

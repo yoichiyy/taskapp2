@@ -6,32 +6,27 @@ import 'package:taskapp2/Util/util_dialog.dart';
 import 'package:taskapp2/Util/util_time_calc.dart';
 
 class PageTaskEdit extends StatefulWidget {
-  final Map editTaskData;
-  PageTaskEdit({this.editTaskData});
-
   @override
   _PageTaskEditState createState() => _PageTaskEditState();
 }
 
 class _PageTaskEditState extends State<PageTaskEdit> {
   Color bgColor = Color.fromRGBO(3, 7, 47, 1);
-
-  TextEditingController _nameController = TextEditingController();
   DateTime taskDeadline;
 
-  @override
-  void initState() {
-    // タスク編集時 各項目を反映
-    taskDeadline = _mydatetime;
-    super.initState();
-  } // initStateここまで
+//  @override
+//  void initState() {
+//    // タスク編集時 各項目を反映
+//    super.initState();
+//  } // initStateここまで
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomPadding:
+              false, //キーボードを要素の上に表示。trueなら要素を上に押し出してくれる。
           body: Stack(
             children: [
               Container(
@@ -40,9 +35,9 @@ class _PageTaskEditState extends State<PageTaskEdit> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  padding: EdgeInsets.only(left: 30, right: 30),
+                  padding: EdgeInsets.only(left: 30, right: 30), //四角の右と左に広がらぬよう
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.min, //カラム内で中央に配置
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -7,7 +7,7 @@ class TaskList extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            bar("今日のタスク"),
+            bar("task！！"),
             taskItem(),
             taskItem(),
             taskItem(),
@@ -22,7 +22,7 @@ class TaskList extends StatelessWidget {
             taskItem(),
             taskItem(),
             taskItem(),
-            bar("明日以降のタスク"),
+            bar("tomorrow"),
           ],
         ),
       ),
@@ -43,9 +43,9 @@ class TaskList extends StatelessWidget {
               Expanded(
                 child: ListTile(
                   //デフォルトで横幅いっぱいという設定。
-                  title: Text("お茶を飲む"),
-                  subtitle: Text("1月19日(火)"),
-                  trailing: Text("1時間後"),
+                  title: Text("drink tea"),
+                  subtitle: Text("1/19(Tue)"),
+                  trailing: Text("1hour later"),
                 ),
               ),
             ],
