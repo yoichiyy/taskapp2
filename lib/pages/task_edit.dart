@@ -13,6 +13,12 @@ class PageTaskEdit extends StatefulWidget {
 class _PageTaskEditState extends State<PageTaskEdit> {
   Color bgColor = Color.fromRGBO(3, 7, 47, 1);
   DateTime taskDeadline;
+  List<Map> _repeatList = [
+    {"text": "繰り返さない", "durationDays": null}
+  ];
+  int _repeatIndex = 0;
+  DateFormat _format = DateFormat('E', "ja_JP");
+  TextEditingController _nameController = TextEditingController();
 
 //  @override
 //  void initState() {
@@ -48,8 +54,14 @@ class _PageTaskEditState extends State<PageTaskEdit> {
 //                                  UtilMovePage().normalPush(context,
 //                                  MyHomePage()) //それともページのレイヤーみたいのを剥がす操作だろうか。そもそもそういうペジ操作についての知識がほしい。
                           ),
-                          Icon(Icons.loop),
-                          Icon(Icons.play_circle_outline),
+                          _iconButton(Icons.loop, () {
+                            _setRepeat(context);
+                          }),
+                          _iconButton(Icons.play_circle_outline, () {
+                            print(_nameController.text);
+                            print(taskDeadline);
+                            print(_repeatList[_repeatIndex]);
+                          }),
                         ],
                       ),
                       _inputTaskName(),
@@ -67,7 +79,7 @@ class _PageTaskEditState extends State<PageTaskEdit> {
                         color: Colors.black,
                         height: 1,
                       ),
-                      _tagSelect(),
+//                      _tagSelect(),
                     ],
                   ),
                 ),
@@ -104,6 +116,8 @@ class _PageTaskEditState extends State<PageTaskEdit> {
       padding: EdgeInsets.only(left: 5, right: 5),
       color: Colors.white,
       child: TextField(
+        controller: _nameController,
+        onChanged: (text) => _nameController.text = text,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'タスク名を入力...',
@@ -179,21 +193,21 @@ class _PageTaskEditState extends State<PageTaskEdit> {
                 ),
               ],
             ),
-            Container(
-              width: 50,
-              child: FlatButton(
-                padding: EdgeInsets.zero,
-                child: Icon(
-                  Icons.clear,
-                ),
-                onPressed: () {
-                  print("==== clear!! ====");
-                  setState(() {
-                    taskDeadline = null;
-                  });
-                },
-              ),
-            )
+//            Container(
+//              width: 50,
+//              child: FlatButton(
+//                padding: EdgeInsets.zero,
+//                child: Icon(
+//                  Icons.clear,
+//                ),
+//                onPressed: () {
+//                  print("==== clear!! ====");
+//                  setState(() {
+//                    taskDeadline = null;
+//                  });
+//                },
+//              ),
+//            )
           ],
         ),
       ),
@@ -263,6 +277,60 @@ class _PageTaskEditState extends State<PageTaskEdit> {
         color: Color.fromRGBO(190, 200, 210, 1),
         child: Text("もとはタグ選択"),
       ),
+    );
+  }
+
+  Widget _pickerItem(String str) {
+    return Text(
+      str,
+      style: const TextStyle(fontSize: 18),
+    );
+  }
+
+  void _setRepeatList() {
+    _repeatList = [
+      {"text": "繰り返さない", "durationDays": null},
+      {"text": "毎日", "durationDays": Duration(days: 1).inDays},
+      {
+        "text": "${_format.format(_mydatetime)}曜日ごと",
+        "durationDays": Duration(days: 7).inDays
+      },
+      {"text": "2週間ごと", "durationDays": Duration(days: 14).inDays}
+    ];
+  }
+
+  void _setRepeat(BuildContext context) {
+    List<String> _repeatTextList = [];
+
+    _setRepeatList();
+    for (var i = 0; i < _repeatList.length; i++) {
+      _repeatTextList.add(_repeatList[i]["text"]);
+    }
+
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height / 3,
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CupertinoPicker(
+                scrollController: FixedExtentScrollController(
+                  initialItem: _repeatIndex,
+                ),
+                itemExtent: 26,
+                children: _repeatTextList.map(_pickerItem).toList(),
+                onSelectedItemChanged: (index) {
+                  setState(() {
+                    _repeatIndex = index;
+//                    modelTask.repeat = _repeatList[_repeatIndex];
+                  });
+                },
+              )),
+        );
+      },
     );
   }
 }
