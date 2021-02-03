@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taskapp2/pages/diary.dart';
 import 'package:taskapp2/pages/goal.dart';
 import 'package:taskapp2/pages/task_list.dart';
 import 'package:taskapp2/Util/util_move_page.dart';
@@ -14,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
-  List pages = [TaskList(), Goal(), Diary()];
+  List pages = [TaskList(), Goal()];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: "task"),
           BottomNavigationBarItem(icon: Icon(Icons.library_books), label: "A"),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: "B"),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
