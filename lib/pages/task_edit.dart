@@ -63,6 +63,7 @@ class _PageTaskEditState extends State<PageTaskEdit> {
                             print(taskDeadline);
                             print(_repeatList[_repeatIndex]);
                             ModelTask().saveTask(name: _nameController.text);
+                            print("モデルタスク実行");
                           }),
                         ],
                       ),
