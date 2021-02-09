@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:taskapp2/Util/util_dialog.dart';
 import 'package:taskapp2/Util/util_time_calc.dart';
+import 'package:taskapp2/model/model_task.dart';
 
 class PageTaskEdit extends StatefulWidget {
   @override
@@ -61,6 +62,7 @@ class _PageTaskEditState extends State<PageTaskEdit> {
                             print(_nameController.text);
                             print(taskDeadline);
                             print(_repeatList[_repeatIndex]);
+                            ModelTask().saveTask(name: _nameController.text);
                           }),
                         ],
                       ),
