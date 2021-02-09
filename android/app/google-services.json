@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "49102970471",
+    "project_id": "mugi-542c2",
+    "storage_bucket": "mugi-542c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49102970471:android:766da5ae99b2c09fe4fec2",
+        "android_client_info": {
+          "package_name": "com.yoichiyy.taskapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49102970471-3mhdrs1dfbm3tuo149spdub0hgcs35pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Z8gMcVEBeizcMp4Ak29uERxwDaQlqRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49102970471-3mhdrs1dfbm3tuo149spdub0hgcs35pm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "49102970471-fdgo1nvm6a0tnhgvogs17uje07rag3k8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yoichiyy.taskapp2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
